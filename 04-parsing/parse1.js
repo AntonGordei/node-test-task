@@ -38,34 +38,27 @@ fs.readFile('contacts.csv', (err, data1) => {
             jsonArrPhones.push(
                 {
                     location_id: keys[2],
-                    number: keys[8]
+                    number: keys[8],
+                    number_type: keys[9]
                 }
             )
         }
 
         let jsonResult = []
 
-
-
+        console.log(jsonArrPhones)
         for (i = 1; i < jsonArrContacts.length; i++) {
             let obj = {
                 name: jsonArrContacts[i].name,
-                phones: [
-                    {
-                        phone_type_1: ""
-                    },
-                    {
-                        phone_type_2: ""
-                    },
-                ]
+                phones: []
             }
             for (j = 1, count = 0; j < jsonArrPhones.length; j++) {
                 console.log(jsonArrContacts[i].location_id === jsonArrPhones[j].location_id)
                 if (jsonArrContacts[i].location_id === jsonArrPhones[j].location_id) {
-                    count++
+                    obj.phones.push({[jsonArrPhones[j].number_type]:jsonArrPhones[j].number})
                 }
-                if (count === 0) obj.phones[0].phone_type_1 = jsonArrPhones[j].number
-                if (count === 1) obj.phones[1].phone_type_2 = jsonArrPhones[j].number
+                // if (count === 0) obj.phones[0].phone_type_1 = jsonArrPhones[j].number
+                // if (count === 1) obj.phones[1].phone_type_2 = jsonArrPhones[j].number
 
             }
             jsonResult.push({[i]:obj})
