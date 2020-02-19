@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "jest-puppeteer": "^4.4.0",
+    "prettier": "^1.19.1",
+    "puppeteer": "^2.1.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-puppeteer"
+  },
+  "name": "WebTests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
